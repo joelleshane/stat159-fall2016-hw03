@@ -1,0 +1,80 @@
+---
+title: "Regression Analysis"
+author: "Joelle Shane"
+date: "October 12, 2016"
+output: pdf_document
+---
+
+## Abstract
+
+Working with reproducability in mind, this report generates the results given in Chapter 3.2 of "An Introduction to Statistical Learning." I reproduce the tables given in this chapter, using the data set the authors used. It can be downloaded at: http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv. A multiple linear regression is run to see if are results match the original results. 
+
+## Introduction
+
+Advertising can be extremely costly, but also extremely effective. The goal is to spend as little on advertising as possible while seeing the most payoff as an increase in sales. By running a multiple linear regression, we can estimate the effect advertising via television, radio, and newspapers has on sales and therefore extrapolate that to how worthwhile a method of advertising is. If we know the expected increase of sales for every increase of TV, radio, or newspaper advertising, we can then calculate how much money we are spending on advertising verus how much money we make from the addionional sales and see if the method of avertising is profitable. If it's profitable, we can increase expenditure in that avenue to increase sales but we also might see expenditures in different areas of advertisment bring even more sales and more returns. The scope of this report focuses on these three methods of advertising and the effect they have on sales but it is important to understand the broad application a regression such as this one can have in a business setting. 
+
+## Data
+
+The data used for this report is advertising data of a product that includes the sales (measured in thousands of units) of a product across two hundred different markets and the amount spent on advertising (measured in thousands of dollars). The advertising data is colleced in three different avenues of advertising: television, radio, and newspaper. Each entry in the data set has the corresponding amount spent on the different advertising media and the corresponding amount of sales of the product in that time period. 
+
+## Methodology
+
+To analyze the effect of advertising by television, radio, or newspaper on the amount of sales, a multiple linear regression is run. This method holds the amount of advertising on radio and newspapers constant and only varies the amount of advertising spent on television, then measures the change in sales corresponding to a one unit change in the amount of money spent on telvision advertisment. This gives us an estimate of the effect television advertising has on total sales. This method is then repeated for both radio advertising and newspaper advertising, and the coefficients for each are produced. The model for this regression is as follows:
+
+### Simple Linear Regression : Y = B0 + X1B1  + X2B2 + X3B3 + u
+
+##### Y : Total Sales
+
+This is the dependent variable in our model and is effected by the amount of money spent on TV advertising. We calculate this predicted value based on the other elements of the model.
+
+##### B0 : Intercept
+
+The intercept is the amount of sales of the produce we would see even with no money spent on television advertising. Of course, it is natural to assume that we would sell some amount of product without any advertising at all.
+
+##### B1 : Coefficient on TV advertising
+
+The coefficient on TV advertising represents the amount we predict to see total sales increase if we increase the amount spent on TV advertising by one unit. This follows from assuming advertising has an effect on sales and calculating what that effect is from the data set. 
+
+#### B2 : Coefficient on Radio, B3: Coefficient on Newspaper
+
+These coefficients have the same interpretation as the coefficient for TV advertising (B1), but they are dependent on radio advertising and newspaper advertising, respectively.
+
+##### X1 : TV advertising amount 
+
+This is the independent variable in the model. Given the chosen amount of TV advertising, we can calculate the expected value of total sales. 
+
+#### X2 : Radio advertising amount, X3 : Newspaper advertising amount
+
+These variables have the same interpretation as the variable for TV advertising (X1), but they are dependent on radio advertising amount and newspaper advertising amount, respectively. 
+
+##### u : error
+
+The error term is random noise and something for which we cannot control. This incorporates the idea that while we predict sales will be one thing, it might not hit that exact target due to random chance. 
+
+## Results
+
+Parameter | Estimate
+----------|----------
+Coefficient on TV | 0.047
+Coefficient on Radio |
+Coefficient on Newspaper | 
+Standard Error | 0.0026
+
+
+t value | 17.67
+p-value | <2e-16
+Residual Squared Error | 3.259
+Adjusted R-Squared | 0.6099
+
+From the summary statistics we can see that TV advertising has an estimated coefficen tof 0.048. This means that for every one thousand dollar increase in TV spending, there is an increase in total sales by 48. We also get the standard error assosiated with that value which allows us to calculate the t statistic and p-value. The p-value is almost zero and is definitely under the threshold (0.05) to conclude that this result was not obtained by chance and in fact TV advertising has a real effect on sales. 
+
+The R-squared value tells us how much of the chance in Y is explained by the change in X. Here our R-squared value is about 0.6 which means that around 60% of the change in total sales is due to the change in expenditure in TV advertising. This is a strong R-squared value and we can conclude that the data is explained well by our model. 
+
+We can see the visual realization of the regression in this plot. There is a positive correlation between TV advertising and sales, hence the positive slope of the graph. The best fit line (in red) shows us our prediction of where total sales should be given TV advertising, based on our estimate of the coefficient from the data. The slope of this line is equal to the coefficient and is equal to 0.048. If all the dots were perfectly on the line, this would mean every outcome matched every prediction the model made, and there would be no random chance. Where deviations from the line occur, we explain this as random error that we cannot control. 
+
+## Conclusions
+
+The main conclusion we draw from this analysis is for every 1,000 dollar increase in TV advertising, there is an increase of 48 in total sales. It is up to the individual business to interpret this as profitable or worthwhile, as they can calculate how much revenue is made from selling 48 products and see if that is justified by spending $1,000 on television advertising. The results are the same as presented in chapter 3.1 of An Introduction to Statistical Learning, which is further evidence that our regression and the original regression was run correctly. This is important because if businesses are planning on using this model to estimate cost and returns, they stand to lose money if the results are incorrect. Of course as with any statistical estimation, there is always a standard error and deviation so our results are most likely not completely accurate but as long as their close enough and provide those potential deviations, businesses can adjust and plan accordingly. 
+
+
+
