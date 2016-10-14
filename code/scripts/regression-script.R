@@ -1,4 +1,4 @@
-ad <- read.csv("http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv")
+ad = read.csv(file = "../../data/Advertising.csv")
 
 regtv <- lm(Sales ~ TV, data = ad)
 sumtv <- summary(regtv)
